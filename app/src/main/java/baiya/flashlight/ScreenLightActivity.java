@@ -248,7 +248,7 @@ public class ScreenLightActivity extends Activity
     }
 
     private float getLight() {
-        return (float) mLightBar.getProgress() / mLightBar.getMax() * 0.5f + 0.5f ;
+        return (float) mLightBar.getProgress() / mLightBar.getMax() * 0.7f + 0.3f ;
     }
 
     public void setScreenLight(float brightness) {

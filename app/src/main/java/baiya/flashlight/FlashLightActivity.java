@@ -138,6 +138,7 @@ public class FlashLightActivity extends Activity
         mCurrentColors = ColorGroups.colorGroups.get(position);
         saveSelectedColorArrayIndex(position);
         setImgColors();
+        saveScreenColor();
     }
 
     public boolean isLightOnOpen() {

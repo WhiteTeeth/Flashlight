@@ -11,10 +11,14 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
+import baiya.flashlight.controler.FlickTask;
+import baiya.flashlight.controler.IFlashControl;
+import baiya.flashlight.controler.PreferencesManager;
+import baiya.flashlight.controler.WarningTask;
 import baiya.flashlight.views.VerticalSeekBar;
 
 public class ScreenLightActivity extends Activity
-        implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, IFlashControl{
+        implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, IFlashControl {
 
     public static PendingIntent getPendingIntent(Context context, int widgetId) {
         Intent intent = new Intent(context, ScreenLightActivity.class);

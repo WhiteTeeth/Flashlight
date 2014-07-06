@@ -1,9 +1,7 @@
-package baiya.flashlight;
+package baiya.flashlight.controler;
 
 import android.os.Handler;
 import android.os.Message;
-
-import baiya.flashlight.tools.Logger;
 
 public class WarningTask {
 
@@ -25,17 +23,14 @@ public class WarningTask {
     }
 
     public void stop() {
-        Logger.i("stop");
         mHandler.removeMessages(MSG);
         mCounter = 0;
-        Logger.i("stop");
     }
 
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             mCounter = mCounter % 12;
-            Logger.d("handler");
             int delay;
             if (mCounter == 0 || mCounter == 6) {
                 if (mFlashControl != null) {
@@ -53,7 +48,6 @@ public class WarningTask {
                 }
                 delay = 100;
             }
-            Logger.d("handler");
             sendMessageDelayed(obtainMessage(MSG), delay);
             mCounter ++;
         }

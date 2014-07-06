@@ -1,7 +1,10 @@
 package baiya.flashlight;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,10 +13,14 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import baiya.flashlight.controler.CameraManager;
+import baiya.flashlight.controler.FlickTask;
+import baiya.flashlight.controler.IFlashControl;
+import baiya.flashlight.controler.SosThread;
 import baiya.flashlight.views.VerticalSeekBar;
+import baiya.flashlight.widget.FlashLightWidget;
 
 public class LightActivity extends Activity
-        implements View.OnClickListener, IFlashControl{
+        implements View.OnClickListener, IFlashControl {
 
     private ImageView mLightFlickBtn;
     private ImageView mLightTouchBtn;
@@ -24,6 +31,8 @@ public class LightActivity extends Activity
 
     private SosThread mSosThread;
     private FlickTask mFlickTask;
+
+    private boolean isFinish = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +84,9 @@ public class LightActivity extends Activity
             }
         });
 
-        openFlash();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(FlashLightWidget.ACTION_LED_OFF);
+        registerReceiver(mReceiver, filter);
     }
 
     private long getFlickInterval() {
@@ -91,14 +102,44 @@ public class LightActivity extends Activity
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onResume() {
+        openFlash();
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
         if (mSosThread != null) {
             mSosThread.stopThread();
         }
         if (mFlickTask != null) {
             mFlickTask.stop();
         }
-        CameraManager.closeFlash();
+        mLightFlickBtn.setSelected(false);
+        mLightTouchBtn.setSelected(false);
+        mLightSosBtn.setSelected(false);
+        if (!isFinish) {
+            openFlash();
+        }
+        super.onStop();
+    }
+
+    @Override
+    public void finish() {
+        isFinish = true;
+        super.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mReceiver);
+        if (mSosThread != null) {
+            mSosThread.stopThread();
+        }
+        if (mFlickTask != null) {
+            mFlickTask.stop();
+        }
+        closeFlash();
         CameraManager.release();
         super.onDestroy();
     }
@@ -110,33 +151,25 @@ public class LightActivity extends Activity
                 this.finish();
                 break;
             case R.id.light_flick:
-                mLightSosBtn.setSelected(false);
                 selectSos(false);
-                mLightTouchBtn.setSelected(false);
                 selectTouch(false);
-                v.setSelected(!v.isSelected());
-                selectFlick(v.isSelected());
+                selectFlick(!v.isSelected());
                 break;
             case R.id.light_touch:
-                mLightSosBtn.setSelected(false);
                 selectSos(false);
-                mLightFlickBtn.setSelected(false);
                 selectFlick(false);
-                v.setSelected(!v.isSelected());
-                selectTouch(v.isSelected());
+                selectTouch(!v.isSelected());
                 break;
             case R.id.light_sos:
-                mLightFlickBtn.setSelected(false);
                 selectFlick(false);
-                mLightTouchBtn.setSelected(false);
                 selectTouch(false);
-                v.setSelected(!v.isSelected());
-                selectSos(v.isSelected());
+                selectSos(!v.isSelected());
                 break;
         }
     }
 
     private void selectFlick(boolean selected) {
+        mLightFlickBtn.setSelected(selected);
         if (selected) {
             if (mFlickTask != null) {
                 mFlickTask.stop();
@@ -156,6 +189,7 @@ public class LightActivity extends Activity
     }
 
     private void selectTouch(boolean selected) {
+        mLightTouchBtn.setSelected(selected);
         if (selected) {
             closeFlash();
         } else {
@@ -164,6 +198,7 @@ public class LightActivity extends Activity
     }
 
     private void selectSos(boolean selected) {
+        mLightSosBtn.setSelected(selected);
         if (selected) {
             if (mSosThread != null) {
                 mSosThread.stopThread();
@@ -182,12 +217,29 @@ public class LightActivity extends Activity
 
     @Override
     public void closeFlash() {
-        CameraManager.closeFlash();
+        if (mLightFlickBtn.isSelected() || mLightSosBtn.isSelected() || mLightTouchBtn.isSelected()) {
+            CameraManager.closeFlash();
+        } else {
+            sendBroadcast(new Intent(FlashLightWidget.ACTION_LED_OFF));
+        }
     }
 
     @Override
     public void openFlash() {
-        CameraManager.openFlash(LightActivity.this);
+        if (mLightFlickBtn.isSelected() || mLightSosBtn.isSelected() || mLightTouchBtn.isSelected()) {
+            CameraManager.openFlash(LightActivity.this);
+        } else {
+            sendBroadcast(new Intent(FlashLightWidget.ACTION_LED_ON));
+        }
     }
+
+    BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (FlashLightWidget.ACTION_LED_OFF.equals(intent.getAction())) {
+                LightActivity.this.finish();
+            }
+        }
+    };
 
 }

@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import baiya.flashlight.bean.ColorGroups;
+import baiya.flashlight.controler.PreferencesManager;
 
 public class FlashLightActivity extends Activity
         implements View.OnClickListener, ColorPickerDialog.OnSelectedListener{

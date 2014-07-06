@@ -10,6 +10,7 @@ import android.widget.RemoteViews;
 
 import baiya.flashlight.R;
 import baiya.flashlight.controler.CameraManager;
+import baiya.flashlight.controler.NotificationControl;
 
 /**
  * Implementation of App Widget functionality.
@@ -33,6 +34,8 @@ public class FlashLightWidget extends AppWidgetProvider {
             views.setInt(R.id.widget_led, "setBackgroundResource", R.drawable.bg_led_on_widget);
             views.setOnClickPendingIntent(R.id.widget_led, PendingIntent.getBroadcast(context, 0, new Intent(ACTION_LED_OFF), 0));
             appWidgetManager.updateAppWidget(widgetIds, views);
+
+            NotificationControl.showNotification(context);
         } else if (ACTION_LED_OFF.equals(action)) {
             CameraManager.closeFlash();
             CameraManager.release();
@@ -45,6 +48,8 @@ public class FlashLightWidget extends AppWidgetProvider {
             views.setInt(R.id.widget_led, "setBackgroundResource", R.drawable.widget_led);
             views.setOnClickPendingIntent(R.id.widget_led, PendingIntent.getBroadcast(context, 0, new Intent(ACTION_LED_ON), 0));
             appWidgetManager.updateAppWidget(widgetIds, views);
+
+            NotificationControl.cancelNotification(context);
         }
         super.onReceive(context, intent);
     }

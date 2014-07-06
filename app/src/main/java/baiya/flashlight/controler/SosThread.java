@@ -1,4 +1,4 @@
-package baiya.flashlight;
+package baiya.flashlight.controler;
 
 import baiya.flashlight.tools.Logger;
 

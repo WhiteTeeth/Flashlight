@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import baiya.flashlight.controler.PreferencesManager;
 import baiya.flashlight.tools.ApkTools;
 
 public class SettingActivity extends Activity implements View.OnClickListener{

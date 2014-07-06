@@ -1,4 +1,4 @@
-package baiya.flashlight;
+package baiya.flashlight.controler;
 
 public interface IFlashControl {
     public void closeFlash();

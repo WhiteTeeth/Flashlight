@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_container"
+    android:background="#ff282828"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout
+        android:id="@+id/te_interface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/te_screen_center"
+            android:tag="2"
+            android:src="@drawable/ic_screen"
+            android:scaleType="center"
+            android:layout_centerInParent="true"
+            android:background="@drawable/te_screen_btn"
+            android:layout_width="122dp"
+            android:layout_height="122dp" />
+        <ImageView
+            android:id="@+id/te_tag_center"
+            android:layout_centerInParent="true"
+            android:layout_width="1dp"
+            android:layout_height="1dp" />
+        <ImageView
+            android:id="@+id/te_img_top"
+            android:tag="1"
+            android:layout_marginBottom="85dp"
+            android:layout_above="@id/te_tag_center"
+            android:layout_centerHorizontal="true"
+            style="@style/ColorSelectedBtn" />
+        <ImageView
+            android:id="@+id/te_img_right"
+            android:tag="1"
+            android:layout_marginLeft="85dp"
+            android:layout_toRightOf="@id/te_tag_center"
+            android:layout_centerVertical="true"
+            style="@style/ColorSelectedBtn" />
+        <ImageView
+            android:id="@+id/te_img_bottom"
+            android:tag="1"
+            android:layout_marginTop="85dp"
+            android:layout_below="@id/te_tag_center"
+            android:layout_centerHorizontal="true"
+            style="@style/ColorSelectedBtn" />
+        <ImageView
+            android:id="@+id/te_img_left"
+            android:tag="1"
+            android:layout_marginRight="85dp"
+            android:layout_toLeftOf="@id/te_tag_center"
+            android:layout_centerVertical="true"
+            style="@style/ColorSelectedBtn" />
+        <ImageView
+            android:id="@+id/te_img_left_top"
+            android:tag="1"
+            android:layout_marginRight="53dp"
+            android:layout_marginBottom="53dp"
+            android:layout_toLeftOf="@id/te_tag_center"
+            android:layout_above="@id/te_tag_center"
+            style="@style/ColorSelectedBtn" />
+        <ImageView
+            android:id="@+id/te_img_right_top"
+            android:tag="1"
+            android:layout_marginLeft="53dp"
+            android:layout_marginBottom="53dp"
+            android:layout_toRightOf="@id/te_tag_center"
+            android:layout_above="@id/te_tag_center"
+            style="@style/ColorSelectedBtn" />
+        <ImageView
+            android:id="@+id/te_img_left_bottom"
+            android:tag="1"
+            android:layout_marginTop="53dp"
+            android:layout_marginRight="53dp"
+            android:layout_toLeftOf="@id/te_tag_center"
+            android:layout_below="@id/te_tag_center"
+            style="@style/ColorSelectedBtn" />
+        <ImageButton
+            android:id="@+id/te_img_right_bottom"
+            android:tag="3"
+            android:background="@drawable/te_flash_btn"
+            android:src="@drawable/ic_flash"
+            android:scaleType="center"
+            android:layout_toRightOf="@id/te_screen_center"
+            android:layout_below="@id/te_screen_center"
+            android:layout_width="68dp"
+            android:layout_height="68dp" />
+        </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp">
+        <TextView
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/main_about"
+            android:background="@drawable/button_btn"
+            android:visibility="invisible"
+            android:src="@drawable/ic_aboutus"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent" />
+        </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp">
+        <ImageButton
+            android:id="@+id/te_color_select"
+            android:background="@drawable/button_btn"
+            android:src="@drawable/ic_colorset"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent" />
+        <TextView
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/te_setting"
+            android:background="@drawable/button_btn"
+            android:src="@drawable/ic_settings"
+            android:layout_width="64dp"
+            android:layout_height="fill_parent" />
+        </LinearLayout>
+    <TextView
+        android:id="@+id/main_mask"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+</RelativeLayout>

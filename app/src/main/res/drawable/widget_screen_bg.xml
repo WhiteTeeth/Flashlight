@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector android:dither="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_window_focused="false" android:drawable="@drawable/bg_screen_widget" />
+    <item android:state_pressed="true" android:drawable="@drawable/bg_pressed_widget" />
+    <item android:drawable="@drawable/bg_screen_widget" />
+</selector>

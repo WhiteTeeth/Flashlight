@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/menu_dropdown_panel"
+    android:orientation="vertical">
+    <TextView
+        android:textSize="22.0sp"
+        android:textColor="#ff33b5e5"
+        android:gravity="center_vertical"
+        android:paddingLeft="16.0dip"
+        android:text="@string/color_mode"
+        android:layout_width="match_parent"
+        android:layout_height="64dp" />
+    <TextView
+        android:background="#ff33b5e5"
+        android:layout_width="fill_parent"
+        android:layout_height="2.0dip" />
+    <ListView
+        android:scrollbarThumbVertical="@drawable/scrollbar_handle"
+        android:id="@+id/color_listview"
+        android:fadingEdge="none"
+        android:listSelector="@null"
+        android:scrollingCache="false"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="256dp">
+    </ListView>
+    <TextView
+        android:background="#ff4c4c4c"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip" />
+    <Button
+        android:textSize="12.0sp"
+        android:textColor="#ffffffff"
+        android:id="@+id/color_cancel"
+        android:background="@drawable/listitem_btn"
+        android:text="@string/color_cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="48dip" />
+</LinearLayout>

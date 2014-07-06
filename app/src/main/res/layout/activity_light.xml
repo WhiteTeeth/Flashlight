@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/light_container"
+    android:background="#d0000000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="baiya.flashlight.LightActivity">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dip"
+        android:layout_width="match_parent"
+        android:layout_height="48dip">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/light_flick"
+                android:background="@drawable/flash_flick_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/light_touch"
+                android:background="@drawable/flash_touch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/light_sos"
+                android:background="@drawable/flash_sos_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <baiya.flashlight.views.VerticalSeekBar
+        android:visibility="gone"
+        android:id="@+id/light_bar_right"
+        android:layout_marginLeft="16.0dip"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="300.0dip" />
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/light_touch_tips"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/tips"
+            android:layout_width="178.0dip"
+            android:layout_height="wrap_content" />
+        </FrameLayout>
+    <ImageView
+        android:id="@+id/te_screen_center"
+        android:scaleType="center"
+        android:layout_centerInParent="true"
+        android:layout_width="122.0dip"
+        android:layout_height="122.0dip" />
+    <ImageButton
+        android:id="@+id/light_close"
+        android:background="@drawable/te_flash_btn_on"
+        android:src="@drawable/ic_flash_on"
+        android:scaleType="center"
+        android:layout_toRightOf="@id/te_screen_center"
+        android:layout_below="@id/te_screen_center"
+        android:layout_width="68.0dip"
+        android:layout_height="68.0dip" />
+</RelativeLayout>

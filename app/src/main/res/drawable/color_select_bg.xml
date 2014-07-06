@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <shape android:shape="oval" >
+            <solid android:color="#00000000"/>
+        </shape>
+    </item>
+    <item android:maxLevel="1">
+        <shape android:shape="oval">
+            <solid android:color="#000000"/>
+        </shape>
+    </item>
+    <item android:maxLevel="2">
+        <layer-list >
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="#26000000"/>
+                </shape>
+            </item>
+            <item android:drawable="@drawable/ic_color_selected"/>
+        </layer-list>
+    </item>
+</level-list>

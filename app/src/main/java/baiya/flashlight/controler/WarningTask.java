@@ -27,7 +27,7 @@ public class WarningTask {
         mCounter = 0;
     }
 
-    Handler mHandler = new Handler() {
+    final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             mCounter = mCounter % 12;

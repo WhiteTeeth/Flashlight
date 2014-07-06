@@ -20,12 +20,12 @@ public class Logger {
 
     static final String TAG = Logger.class.getSimpleName();
 
-    public static int LOG_LEVEL = 6;
-    public static int ERROR = 1;
-    public static int WARN = 2;
-    public static int INFO = 3;
-    public static int DEBUG = 4;
-    public static int VERBOS = 5;
+    public static final int LOG_LEVEL = 6;
+    public static final int ERROR = 1;
+    public static final int WARN = 2;
+    public static final int INFO = 3;
+    public static final int DEBUG = 4;
+    public static final int VERBOS = 5;
 
 
     public static void e(String tag, String msg) {

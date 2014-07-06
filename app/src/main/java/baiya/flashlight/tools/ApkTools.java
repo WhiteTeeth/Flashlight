@@ -13,8 +13,7 @@ public class ApkTools {
             String versionName = packageManager.getPackageInfo(context.getPackageName(), 0).versionName;
             Object[] objects = new Object[1];
             objects[0] = versionName;
-            String version = context.getString(R.string.about_version, objects);
-            return version;
+            return context.getString(R.string.about_version, objects);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

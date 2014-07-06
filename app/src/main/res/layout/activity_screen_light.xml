@@ -6,6 +6,7 @@
     tools:context="baiya.flashlight.ScreenLightActivity">
 
     <LinearLayout
+        android:baselineAligned="false"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:id="@+id/screen_mode_container"

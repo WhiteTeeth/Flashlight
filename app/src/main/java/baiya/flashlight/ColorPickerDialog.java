@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,13 +17,10 @@ import java.util.List;
 
 import baiya.flashlight.bean.ColorGroups;
 
-/**
- * Created by BaiYa on 2014/6/30.
- */
 public final class ColorPickerDialog extends DialogFragment
         implements View.OnClickListener, AdapterView.OnItemClickListener{
 
-    int mSelectedColorGroupIndex;
+    private int mSelectedColorGroupIndex;
     private OnSelectedListener mSelectedListener;
     private static ColorPickerDialog mColorPickerDialog;
 
@@ -43,11 +39,6 @@ public final class ColorPickerDialog extends DialogFragment
         } catch (Exception e) {
             mSelectedListener = null;
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
@@ -90,7 +81,7 @@ public final class ColorPickerDialog extends DialogFragment
     }
 
     class ColorListAdapter extends BaseAdapter{
-        int[] colorItemIds = {
+        final int[] colorItemIds = {
                 R.id.color_item_0,
                 R.id.color_item_1,
                 R.id.color_item_2,
@@ -98,7 +89,7 @@ public final class ColorPickerDialog extends DialogFragment
                 R.id.color_item_4,
                 R.id.color_item_5,
                 R.id.color_item_6};
-        List<ColorGroups.ColorGroup> colorGroupList = ColorGroups.colorGroups;
+        final List<ColorGroups.ColorGroup> colorGroupList = ColorGroups.colorGroups;
 
         @Override
         public int getCount() {

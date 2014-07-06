@@ -3,9 +3,6 @@ package baiya.flashlight.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by BaiYa on 2014/6/29.
- */
 public class ColorGroups {
 
     public static final List<ColorGroup> colorGroups;

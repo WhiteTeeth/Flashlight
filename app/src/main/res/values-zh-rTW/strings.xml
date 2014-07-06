@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">手電筒</string>
+    <string name="color_mode">顏色方案</string>
+    <string name="color_cancel">取消</string>
+    <string name="setting_title">設定</string>
+    <string name="setting_about">应用設定</string>
+    <string name="setting_open_light">開啟時打開閃光燈</string>
+    <string name="about_other">其它</string>
+    <string name="setting_rate">做的不錯，去評價一個</string>
+    <string name="setting_share">分享應用給好友</string>
+    <string name="setting_mail">意見反映</string>
+    <string name="setting_about_us">關於我們</string>
+    <string name="setting_share_content">推薦給你一款好用的手電筒，下載地址：</string>
+    <string name="more_share_soft">沒有可分享的應用程序</string>
+    <string name="more_share">更多分享</string>
+    <string name="feedback_title">Flashlight Feedback</string>
+    <string name="about_version">版本 %s</string>
+    <string name="about_title">關於我們</string>
+    <string name="setting_update">軟件更新</string>
+    <string name="update_result">已是最新版本</string>
+    <string name="notification_text">點擊關閉手電筒</string>
+
+</resources>

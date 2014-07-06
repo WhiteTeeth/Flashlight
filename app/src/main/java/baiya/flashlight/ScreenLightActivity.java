@@ -45,7 +45,7 @@ public class ScreenLightActivity extends Activity
     private FlickTask mFlickTask;
     private WarningTask mWarningTask;
 
-    private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+    private final View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             if (!mTouchBtn.isSelected()) return false;

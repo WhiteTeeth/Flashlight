@@ -110,7 +110,7 @@
         <ImageButton
             android:id="@+id/te_color_select"
             android:background="@drawable/button_btn"
-            android:src="@drawable/ic_colorset"
+            android:src="@drawable/ic_color_set"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="fill_parent" />

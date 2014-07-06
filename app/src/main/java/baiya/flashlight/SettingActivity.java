@@ -59,6 +59,9 @@ public class SettingActivity extends Activity implements View.OnClickListener{
             mUpdateBtn.setText(getString(R.string.setting_update));
         }
 
+        boolean lightOnStart = PreferencesManager.getBooleanPreference(this, PreferencesManager.LIGHT_ON_OPEN, false);
+        mOpenLightBox.setChecked(lightOnStart);
+
     }
 
     @Override
@@ -117,6 +120,7 @@ public class SettingActivity extends Activity implements View.OnClickListener{
                 AboutActivity.startActivity(this);
                 break;
             case R.id.setting_update:
+                //TODO 版本更新
                 Toast.makeText(this, R.string.update_result, Toast.LENGTH_SHORT).show();
                 break;
         }

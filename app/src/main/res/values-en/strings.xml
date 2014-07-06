@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title_activity_light">LightActivity</string>
-    <string name="title_activity_screen_light">ScreenLightActivity</string>
-    <string name="title_activity_setting">SettingActivity</string>
-    <string name="title_activity_about">AboutActivity</string>
-
     <string name="app_name">Flashlight</string>
     <string name="color_mode">Color</string>
     <string name="color_cancel">Cancel</string>

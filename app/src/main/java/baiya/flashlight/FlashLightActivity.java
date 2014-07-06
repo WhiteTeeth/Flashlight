@@ -5,12 +5,10 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import baiya.flashlight.bean.ColorGroups;
 import baiya.flashlight.controler.PreferencesManager;
@@ -34,13 +32,14 @@ public class FlashLightActivity extends Activity
             R.id.te_img_left,
             R.id.te_img_left_bottom,
             R.id.te_img_bottom};
-    private ImageView[] mImgViews = new ImageView[mImgIds.length];
+    private final ImageView[] mImgViews = new ImageView[mImgIds.length];
     private int mSelectedId = -1;
 
     private ColorGroups.ColorGroup mCurrentColors;
-    private Map<Integer, Integer> mViewColorMap;
+    private SparseArray<Integer> mViewColorMap;
 
-    private View.OnClickListener mClickListener = new View.OnClickListener() {
+
+    private final View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             ImageView before = (ImageView) findViewById(mSelectedId);
@@ -60,7 +59,7 @@ public class FlashLightActivity extends Activity
     };
 
     private void setImgColors() {
-        mViewColorMap = new HashMap<Integer, Integer>();
+        mViewColorMap = new SparseArray<Integer>();
         for (int i = 0; i < mImgViews.length; i++) {
             // 记录view-color配对
             mViewColorMap.put(mImgViews[i].getId(), mCurrentColors.colorArray[i]);
@@ -113,19 +112,9 @@ public class FlashLightActivity extends Activity
         imageView.setScaleType(ImageView.ScaleType.CENTER);
         imageView.setSelected(true);
 
-    }
-
-    public int getSelectedColorIndex() {
-        return PreferencesManager.getIntPreference(this, PreferencesManager.SELECTED_COLOR_INDEX, 0);
-    }
-
-    public void saveSelectedColorIndex() {
-        PreferencesManager.setIntPreference(this, PreferencesManager.SELECTED_COLOR_INDEX, mSelectedId);
-    }
-
-    public void saveScreenColor() {
-        int color = mViewColorMap.get(mSelectedId);
-        PreferencesManager.setIntPreference(this, PreferencesManager.SCREEN_COLOR, color);
+        if (isLightOnOpen()) {
+            LightActivity.startActivityForResult(this);
+        }
     }
 
     @Override
@@ -149,6 +138,23 @@ public class FlashLightActivity extends Activity
         mCurrentColors = ColorGroups.colorGroups.get(position);
         saveSelectedColorArrayIndex(position);
         setImgColors();
+    }
+
+    public boolean isLightOnOpen() {
+        return PreferencesManager.getBooleanPreference(this, PreferencesManager.LIGHT_ON_OPEN, false);
+    }
+
+    public int getSelectedColorIndex() {
+        return PreferencesManager.getIntPreference(this, PreferencesManager.SELECTED_COLOR_INDEX, 0);
+    }
+
+    public void saveSelectedColorIndex() {
+        PreferencesManager.setIntPreference(this, PreferencesManager.SELECTED_COLOR_INDEX, mSelectedId);
+    }
+
+    public void saveScreenColor() {
+        int color = mViewColorMap.get(mSelectedId);
+        PreferencesManager.setIntPreference(this, PreferencesManager.SCREEN_COLOR, color);
     }
 
     public int getSelectedColorArrayIndex() {
